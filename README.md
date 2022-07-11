@@ -8,13 +8,13 @@ As the population on earth continues to grow, so too does the demand placed on t
 
 Our society has always grown at the hands of improvements to this industry. There have been three major agricultural revolutions throughout human history. With each, comes a drastic increase in humanity ability to sustain larger populations. 
 
- **Neolithic Revolution**
+ **Neolithic Revolution** <br>
 The first revolution saw humans transition from a hunter-gatherer species, to one of organized communities and agriculture. While many improvements such as irrigation came at this early stage, the domestication and selective breeding of cereal grasses set the stage for agriculture as we know it today. 
 
-**British Agricultural Revolution**
+**British Agricultural Revolution**<br>
 While this time period is dominated by the onset of the industrial revolution, the second agricultural revolution has been cited as the cause for this drastic shift in society. Again main advancement through the british agricultural and industrial revolution propelled humanity into another great population boon. Many historians credit one of the most important advancement to be the Norfolk four-course rotation. This new stype of crop rotation, increased soil fertility through the use of nitrogen-fixing clover, as well as providing winter turnips, which utilized deeper soil nutrients due to its root structure. It’s possible this increase in productivity for both crops and workers is what allowed for the industrial revolution to boom.
 
-**Green Revolution**
+**Green Revolution**<br>
 Starting in the 50s and 60s, the third great agricultural revolution began. This revolution had widespread impact on a reduction in land use, poverty, worldwide hunger, and even infant mortality. This was due to advancements across the board in agricultural chemical use including pesticides and fertilizers, high yield seeds, and the introduction to modern machineries. 
 
 While these revolutions have paved the way for our population growth, none of them were without their pain points and each of them have successively led to an reduction in finite resources of our earth. 
