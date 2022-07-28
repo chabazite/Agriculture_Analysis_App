@@ -104,34 +104,7 @@ def return_pop_figures():
         color = 'urban_rural'
         )
    
-    
-
-    # graph_three = []
-
-    # graph_three.append(
-    #             go.Scatter(
-    #     x =world_bank_df['date'],
-    #     y = world_bank_df['total_rural_pop'],
-    #     mode = 'lines'
-    #     )
-    # )
-
-
-
-
-
-    # graph_four = []
-
-    # graph_four.append(
-    #             go.Scatter(
-    #     x =[0,1,2,3,4,5],
-    #     y = [0, 2, 4, 6, 8, 10],
-    #     mode = 'lines'
-    #     )
-    # )
-
-
-    
+        
 
     figures = []
     figures.append(graph_one)
