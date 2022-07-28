@@ -1,1 +1,0 @@
-indicators = ['SP.POP.TOTL']
