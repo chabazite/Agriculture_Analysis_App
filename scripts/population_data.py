@@ -2,36 +2,19 @@ import requests
 import pandas as pd
 import numpy as np
 import plotly.express as px
-
-world_default = ['World']
-
+from scripts.dataframe_compile import indicator_url_creation, create_format_dataframe
+     
+indicators = ['SP.POP.TOTL','SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
+world_bank_columns = ['population','rural_pop_%','urban_pop_%',]
 
 def top_filter(filter):
     pass
 
 
-def data_wrangle(df):
-
-    df.drop(columns=['indicator','obs_status','decimal', 'unit'], inplace=True, axis=1)
-
-    df["date"] = pd.to_datetime(df["date"]).dt.year
-    df["date"] = pd.to_numeric(df["date"])
-    
-        #turn country feature into just country name
-    for i, country in enumerate(df['country']):
-        df.loc[i,'country'] = country['value']
-
-    df = df[df['country'].isin(world_default)]
-    
-    
-    return df
 
 
-     
-indicators = ['SP.POP.TOTL','SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
 
-
-def return_pop_figures():
+def return_pop_figures(data_filter_list):
     """
     creates four plotly visualizations
 
@@ -42,47 +25,10 @@ def return_pop_figures():
         list (dict): list containing the four plotly visualizations
     """
 
-    # loop to create a list of URLs from api indicators
-    urls = []
-    for indicator in indicators:
-        url = 'http://api.worldbank.org/v2/countries/indicators/' + indicator 
-        urls.append(url)
-    dataframe_list = []
 
-    # loop to get request each url and iterate through 18 pages of json data, then turn into a list of dataframes.
+    dataframe_list = indicator_url_creation(indicators)
+    world_bank_df = create_format_dataframe(dataframe_list,world_bank_columns,data_filter_list)
 
-    for url in urls:
-        data = []
-        try:  
-            for page in range(1,18):
-                payload = {'format': 'json', 'per_page': '1000', 'date':'1960:2022', 'page':page}     
-                r = requests.get(url, params=payload)
-                data+=r.json()[1]
-
-            dataframe_list.append(pd.DataFrame(data))
-
-        except:
-            print('could not load data', url)
-
-        world_bank_columns = ['population','rural_pop_%','urban_pop_%',]
-
-        world_bank_df = None
-
-    #format and combine datframes into a single dataframe
-    for i, df in enumerate(dataframe_list):
-      df = data_wrangle(df)
-
-    
-      if world_bank_df is not None:
-        world_bank_df.insert(loc=len(world_bank_df.columns),column=world_bank_columns[i], 
-        value=df['value'])
-      else:
-        world_bank_df = pd.DataFrame(df)
-        world_bank_df.rename(columns={'value' : world_bank_columns[i]}, inplace=True)
-    
-    world_bank_df['total_urban_pop'] = world_bank_df['urban_pop_%']*world_bank_df['population'] / 100
-
-    world_bank_df['total_rural_pop'] = world_bank_df['rural_pop_%']*world_bank_df['population'] / 100
 
     # first chart plots the total population of the world from 1960 to current  available data
     
@@ -96,14 +42,24 @@ def return_pop_figures():
     # second cahrt plots the total urban vs rural population of the world from 1960  to current available data
 
     #reshape for combined plot
-    df_rural_urban = world_bank_df.melt(id_vars = ['date'], value_vars=['total_urban_pop','total_rural_pop'],var_name = 'urban_rural', value_name = 'population')
+    df_rural_urban = world_bank_df.melt(id_vars = ['date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
 
     graph_two= px.line(df_rural_urban,
         x ='date',
-        y = 'population',
-        color = 'urban_rural'
+        y = 'population_new',
+        color = 'urban_rural',
+        title = 'Rural vs. Urban Population Growth',
+        labels = {
+            "population_new": "population",
+            "urban_rural": "Location"
+        }
         )
-   
+    graph_two.update_layout(legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    ))
         
 
     figures = []

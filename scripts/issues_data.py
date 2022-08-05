@@ -1,28 +1,21 @@
+import requests
 import pandas as pd
 import numpy as np
-import plotly.graph_objs as go
+import plotly.express as px
+from scripts.dataframe_compile import indicator_url_creation, create_format_dataframe
+from scripts.additional_features import create_land_features, create_econ_features
 
-world_default = ['World']
+indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
+    'AG.LND.CROP.ZS','AG.LND.AGRI.ZS','AG.LND.ARBL.ZS','AG.LND.CREL.HA', 
+    'SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS', 'SL.AGR.EMPL.MA.ZS', 
+    'SL.AGR.EMPL.FE.ZS', 'AG.CON.FERT.ZS','AG.YLD.CREL.KG', 'NV.AGR.TOTL.ZS', 'SH.DYN.MORT', 'EN.ATM.GHGT.KT.CE', 'EN.ATM.CO2E.KT', 'SI.POV.DDAY']
+
+world_bank_columns = ['population', 'total_land_sqkm', 'forest_%','crop_%'
+    'agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%', 'male_employement_ag', 'female_employment_ag', 'fertilizer_consump','cereal_yield_kgPerHectare', 'total_gdp_ag_forestry_fishing', 'mortality_under5', 'Total_Greenhouse_gases', 'CO2_emmission','Poverty_under1_90_per_day']
 
 
 def top_filter(filter):
     pass
-
-
-def data_wrangle(question):
-
-    indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
-    'AG.LND.CROP.ZS','AG.LND.AGRI.ZS','AG.LND.ARBL.ZS','AG.LND.CREL.HA', 
-    'SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS', 'SL.AGR.EMPL.MA.ZS', 
-    'SL.AGR.EMPL.FE.ZS', 'AG.CON.FERT.ZS','AG.YLD.CREL.KG', 'NV.AGR.TOTL.ZS',
-    'SH.DYN.MORT', 'EN.ATM.GHGT.KT.CE', 'EN.ATM.CO2E.KT', 'SI.POV.DDAY']
-
-
-
-    pass 
-
-
-
 
 
 def return_issues_figures():
@@ -35,79 +28,57 @@ def return_issues_figures():
     Returns:
         list (dict): list containing the four plotly visualizations
     """
-    # first chart plots the total population of the world from 1960 to current  available data
-    
-    graph_one = []
 
-    graph_one.append(
-        go.Scatter(
-        x =[0,1,2,3,4,5],
-        y = [0, 2, 4, 6, 8, 10],
-        mode = 'lines'
+    dataframe_list = indicator_url_creation(indicators)
+    world_bank_df = create_format_dataframe(dataframe_list, world_bank_columns)
+    world_bank_df = create_land_features(world_bank_df)
+    world_bank_df = create_econ_features(world_bank_df)
+    
+    # first chart plots 
+    
+    graph_one = px.line(world_bank_df,
+        x ='date',
+        y = 'Total_Greenhouse_gases',
+        title = 'Total Greenhouse Gases (kt of CO2 equivalent)',
         )
-    )
-
-    layout_one = dict(title = 'Chart One', 
-                    xaxis = dict(title = 'x-axis label'),
-                    yaxis = dict(title = 'y-axis label'),
-                    )
     
-    # second cahrt plots the total urban population of the world from 1960  to current available data
-    
-    graph_two = []
+    # second cahrt plots 
 
-    graph_two.append(
-                go.Scatter(
-        x =[0,1,2,3,4,5],
-        y = [0, 2, 4, 6, 8, 10],
-        mode = 'lines'
+
+    graph_two= px.line(world_bank_df,
+        x ='date',
+        y = 'CO2_emmission',
+        title = 'Total CO2_emmission ()'
         )
-    )
 
-    layout_two = dict(title='Chart Two',
-                    xaxis = dict(title = 'x-axis label',),
-                    yaxis = dict(title = 'y-axis label',),
-                    )
-    
-    # third cahrt plots the total rural population of the world from 1960  to current available data
 
-    graph_three = []
+    # third chart plots 
 
-    graph_three.append(
-                go.Scatter(
-        x =[0,1,2,3,4,5],
-        y = [0, 2, 4, 6, 8, 10],
-        mode = 'lines'
+
+    graph_three = px.line(world_bank_df,
+        x ='date',
+        y = "Poverty_under1_90_per_day",
+        title = 'Poverty Rate under $1.90 a day',
         )
-    )
 
-    layout_three = dict(title='Chart three',
-                    xaxis = dict(title = 'x-axis label',),
-                    yaxis = dict(title = 'y-axis label',),
-                    )
 
-    # fourth cahrt plots a global heat map with countries population over time from 1960  to current available data
+    # fourth chart plots 
 
-    graph_four = []
 
-    graph_four.append(
-                go.Scatter(
-        x =[0,1,2,3,4,5],
-        y = [0, 2, 4, 6, 8, 10],
-        mode = 'lines'
+
+
+    graph_four= px.line(world_bank_df,
+        x ='date',
+        y = "mortality_under5",
+        title = 'Mortality under 5 years old',
         )
-    )
 
-    layout_four = dict(title='Chart four',
-                    xaxis = dict(title = 'x-axis label',),
-                    yaxis = dict(title = 'y-axis label',),
-                    )
-    
+
 
     figures = []
-    figures.append(dict(data=graph_one, layout=layout_one))
-    figures.append(dict(data=graph_two, layout=layout_two))
-    figures.append(dict(data=graph_three, layout=layout_three))
-    figures.append(dict(data=graph_four, layout=layout_four))
+    figures.append(graph_one)
+    figures.append(graph_two)
+    figures.append(graph_three)
+    figures.append(graph_four)
 
     return figures
