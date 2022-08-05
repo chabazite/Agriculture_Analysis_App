@@ -9,15 +9,7 @@ from scripts.issues_data import return_issues_figures
 
 data_filter_list = ['World','Top 10 Highest Population', 'Top 10 Highest Urban Population', 'Top 10 Highest Rural Population', 'Top 10 largest agricultural land (sq. km)', "Top 10 Highest Population vs. Other"]
 
-# Global HTML template variables.
-@app.context_processor
-def set_global_html_variable_values():
-    if session.get('user'):
-        user_in_session = True
-    else:
-        user_in_session = False
-    template_config = {'user_in_session': user_in_session}
-    return template_config
+
 
 @app.route('/')
 @app.route('/index')
@@ -68,7 +60,7 @@ def land_use_page():
 	figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
 	return render_template('land_use.html', ids=ids,
-		figuresJSON=figuresJSON)
+		figuresJSON=figuresJSON, data_filter_list = data_filter_list, active_btns = ['World'])
 
 
 @app.route('/economics')

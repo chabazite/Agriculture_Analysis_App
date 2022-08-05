@@ -17,27 +17,14 @@
 
 
   <body>
-    <!-- Navbar content -->
-    <div id="nav-placeholder">
-    </div>
-    <script>
-      $(function(){
-        $("#nav-placeholder").load("/static/nav.html");
-      });
-      </script>
-  
+    <!-- Navbar content-->
+    {% include 'nav.html' %}
+      
   <!--main container-->
     <div class="row">
         <!-- left sidebar content -->
         <div class="col-1 border-right">
-        <div id="sidebar-placeholder">
-        
-        </div>
-        <script>
-          $(function(){
-            $("#sidebar-placeholder").load("/static/sidebar.html");
-          });
-          </script>
+        {% include 'sidebar.html' %}
         </div>
        <!-- main content -->
        <div class="col-11">
@@ -53,10 +40,7 @@
 
 
 <footer>
-  <script type='text/javascript'>
-    var graphs = {{figuresJSON | safe}};
-    Plotly.plot('chart',graphs,{});
-  </script>
+  {% block footer %} {% endblock %}
 </footer>
 
 

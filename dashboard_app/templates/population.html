@@ -10,14 +10,7 @@
         <hr>
 
         <!--dropdown menu for filter-->
-        <div id="dropdown_placeholder">
-
-          </div>
-          <script>
-            $(function(){
-              $("#dropdown_placeholder").load("/static/filter_dropdown.html");
-            });
-            </script>
+        {% include 'filter_dropdown.html' %}
 
         <!--charts-->
         <div id="charts" class="container mt-3 text-center">
@@ -39,8 +32,20 @@
                   <div id="{{ids[3]}}"></div>
                 </div>
               </div>
-            </div>
-        </div>
-       </div>
+          </div>
+          <h2>{{group}}</h2> 
   {% endblock %}
 
+{% block footer %}
+
+<script type='text/javascript'>
+  var figures = {{figuresJSON | safe}};
+  var ids = {{ids | safe}};
+  for(var i in figures) {
+  Plotly.plot(ids[i],
+    figures[i].data,
+    figures[i].layout || {});
+  };
+</script>
+
+{% endblock %}
