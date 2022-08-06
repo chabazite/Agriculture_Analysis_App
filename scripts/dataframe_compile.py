@@ -13,6 +13,11 @@ def data_wrangle(df, data_filter_list):
     Returns:
         _type_: _description_
     """
+    data_filter_choice = []
+    if data_filter_list == 'World':
+        data_filter_choice = ['World']
+    elif data_filter_list == 'Top 10 Highest Population':
+        data_filter_choice = top_10_ag_land_2021(df)
 
     df.drop(columns=['indicator','obs_status','decimal', 'unit'], inplace=True, axis=1)
 
@@ -23,7 +28,7 @@ def data_wrangle(df, data_filter_list):
     for i, country in enumerate(df['country']):
         df.loc[i,'country'] = country['value']
 
-    df = df[df['country'].isin(data_filter_list)]
+    df = df[df['country'].isin(data_filter_choice)]
     
     
     return df
