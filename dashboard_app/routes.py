@@ -31,8 +31,7 @@ def population_page():
 	
 	#Parse the Post request for filter groups
 	if (request.method == 'POST') and request.form:
-		figures = return_pop_figures(request.form)
-		choice = request.form['value']
+		figures = return_pop_figures(request.form.get('Radio1'))
 	# GET request returns WORLD for initial page log
 	else:
 		figures = return_pop_figures(['World'])
@@ -44,7 +43,7 @@ def population_page():
 	figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
 	return render_template('population.html', ids=ids,
-		figuresJSON=figuresJSON, data_filter_list = data_filter_list, choice = choice, active_btns = ['World'])
+		figuresJSON=figuresJSON, data_filter_list = data_filter_list, active_btns = ['World'])
 
 
 @app.route('/land_use')

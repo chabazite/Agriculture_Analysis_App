@@ -3,21 +3,49 @@ import pandas as pd
 from scripts.top_10_calc import top_10_population_2021, top_10_rural_population_2021, top_10_urban_population_2021, top_10_ag_land_2021
 
 
+def data_filter(df, data_filter_list):
+    """
+    _summary_
+
+    Args:
+        df (_type_): _description_
+        data_filter_list (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+
+    data_filter_choice = []
+    if data_filter_list == 'World':
+        data_filter_choice = ['World']
+    elif data_filter_list == 'Top 10 Highest Population':
+        data_filter_choice = top_10_population_2021(df)
+    elif data_filter_list ==  'Top 10 Highest Urban Population':
+        data_filter_choice = top_10_urban_population_2021(df)
+    elif data_filter_list ==   'Top 10 Highest Rural Population':
+        data_filter_choice = top_10_rural_population_2021(df)
+    elif data_filter_list ==   'Top 10 largest agricultural land (sq. km)':
+        data_filter_choice = top_10_ag_land_2021(df)
+    # else:
+    #     data_filter_chpoce = '
+
+    return data_filter_choice
+
+
+
+
 def data_wrangle(df, data_filter_list):
     """
     _summary_
 
     Args:
         df (_type_): _description_
+        data_filter_list (_type_): _description_
 
     Returns:
         _type_: _description_
     """
-    data_filter_choice = []
-    if data_filter_list == 'World':
-        data_filter_choice = ['World']
-    elif data_filter_list == 'Top 10 Highest Population':
-        data_filter_choice = top_10_ag_land_2021(df)
+
 
     df.drop(columns=['indicator','obs_status','decimal', 'unit'], inplace=True, axis=1)
 
@@ -27,6 +55,8 @@ def data_wrangle(df, data_filter_list):
         #turn country feature into just country name
     for i, country in enumerate(df['country']):
         df.loc[i,'country'] = country['value']
+
+    data_filter_choice = data_filter(df, data_filter_list)
 
     df = df[df['country'].isin(data_filter_choice)]
     
