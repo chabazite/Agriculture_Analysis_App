@@ -2,16 +2,14 @@ import requests
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from scripts.dataframe_compile import indicator_url_creation, create_format_dataframe
+from scripts.dataframe_compile import indicator_url_creation, combine_dataframe,format_dataframe
+from scripts.additional_features import create_land_features
      
-indicators = ['SP.POP.TOTL','SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
-world_bank_columns = ['population','rural_pop_%','urban_pop_%',]
+indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
+    'AG.LND.CROP.ZS','AG.LND.AGRI.ZS','AG.LND.ARBL.ZS','AG.LND.CREL.HA', 
+    'SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
 
-def top_filter(filter):
-    pass
-
-
-
+world_bank_columns = ['population', 'total_land_sqkm', 'forest_%','crop_%','agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%']
 
 
 def return_pop_figures(data_filter_list):
@@ -27,7 +25,9 @@ def return_pop_figures(data_filter_list):
 
 
     dataframe_list = indicator_url_creation(indicators)
-    world_bank_df = create_format_dataframe(dataframe_list,world_bank_columns,data_filter_list)
+    world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
+    world_bank_df = create_land_features(world_bank_df)
+    world_bank_df = format_dataframe (world_bank_df, data_filter_list)
 
 
     # first chart plots the total population of the world from 1960 to current  available data

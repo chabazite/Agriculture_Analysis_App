@@ -34,7 +34,7 @@ def data_filter(df, data_filter_list):
 
 
 
-def data_wrangle(df, data_filter_list):
+def data_wrangle(df):
     """
     _summary_
 
@@ -56,10 +56,6 @@ def data_wrangle(df, data_filter_list):
     for i, country in enumerate(df['country']):
         df.loc[i,'country'] = country['value']
 
-    data_filter_choice = data_filter(df, data_filter_list)
-
-    df = df[df['country'].isin(data_filter_choice)]
-    
     
     return df
 
@@ -92,14 +88,23 @@ def indicator_url_creation(indicators):
     return dataframe_list
 
 
-def create_format_dataframe(dataframe_list, world_bank_columns, data_filter_list):
+def combine_dataframe(dataframe_list, world_bank_columns):
+    """
+    _summary_
+
+    Args:
+        dataframe_list (_type_): _description_
+        world_bank_columns (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     
     world_bank_df = None
 
     #format and combine datframes into a single dataframe
     for i, df in enumerate(dataframe_list):
-      df = data_wrangle(df,data_filter_list)
-
+      df = data_wrangle(df)
     
       if world_bank_df is not None:
         world_bank_df.insert(loc=len(world_bank_df.columns),column=world_bank_columns[i], 
@@ -108,10 +113,19 @@ def create_format_dataframe(dataframe_list, world_bank_columns, data_filter_list
         world_bank_df = pd.DataFrame(df)
         world_bank_df.rename(columns={'value' : world_bank_columns[i]}, inplace=True)
     
+
+    return world_bank_df
+
+def format_dataframe(world_bank_df, data_filter_list):
+
     world_bank_df['Urban'] = world_bank_df['urban_pop_%']*world_bank_df['population'] / 100
 
     world_bank_df['Rural'] = world_bank_df['rural_pop_%']*world_bank_df['population'] / 100
 
     world_bank_df.drop(labels=['urban_pop_%','rural_pop_%'],axis=1,inplace=True)
+
+    data_filter_choice = data_filter(world_bank_df, data_filter_list)
+
+    world_bank_df = world_bank_df[world_bank_df['country'].isin(data_filter_choice)]
 
     return world_bank_df

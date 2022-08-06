@@ -25,12 +25,11 @@ def top_10_rural_population_2021(df):
     Returns:
         _type_: _description_
     """
-    largest_10_rural = df[df['date']=='2021'].nlargest(n=10,columns='total_rural_pop')
+    largest_10_rural = df[df['date']=='2021'].nlargest(n=10,columns='Rural')
 
     top_10_rural_pop_list = [country for country in largest_10_rural['country']]
 
     return top_10_rural_pop_list
-
 
 
 def top_10_urban_population_2021(df):
@@ -44,7 +43,7 @@ def top_10_urban_population_2021(df):
         _type_: _description_
     """
 
-    largest_10_urban = df[df['date']=='2021'].nlargest(n=10,columns='total_urban_pop')
+    largest_10_urban = df[df['date']=='2021'].nlargest(n=10,columns='Urban')
 
     top_10_urban_pop_list = [country for country in largest_10_urban['country']]
 
@@ -61,7 +60,7 @@ def top_10_ag_land_2021(df):
     Returns:
         _type_: _description_
     """
-    largest_10_land = df[df['date']=='2021'].nlargest(n=10,columns='total_ag_land')
+    largest_10_land = df[df['date']=='2021'].nlargest(n=10,columns='agriculture_sqkm')
 
     top_10_agland_list = [country for country in largest_10_land['country']]
 

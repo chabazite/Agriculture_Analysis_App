@@ -34,8 +34,7 @@ def population_page():
 		figures = return_pop_figures(request.form.get('Radio1'))
 	# GET request returns WORLD for initial page log
 	else:
-		figures = return_pop_figures(['World'])
-		choice = 'World'
+		figures = return_pop_figures('World')
     # plot ids for the html id tag
 	ids = ['figure-{}'.format(i) for i, _ in enumerate(figures)]
 
