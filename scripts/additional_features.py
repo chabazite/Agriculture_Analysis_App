@@ -16,7 +16,6 @@ def create_land_features(world_bank_df):
     world_bank_df['agriculture_sqkm'] = world_bank_df['agricultural_%']*world_bank_df['total_land_sqkm'] / 100
     world_bank_df['arable_sqkm'] = world_bank_df['arable_%']*world_bank_df['total_land_sqkm'] / 100 
     world_bank_df['cereal_grain_sqkm'] = world_bank_df['cereal_grain_hectare']/100
-    world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']
     #drop converted columns
     world_bank_df.drop(labels=['forest_%','crop_%','agricultural_%','arable_%','cereal_grain_hectare'],axis=1,inplace=True)
 
