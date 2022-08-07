@@ -29,6 +29,7 @@ def return_land_figures():
     dataframe_list = indicator_url_creation(indicators)
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
+    world_bank_df = format_dataframe(world_bank_df)
 
     
     # first chart plots 
