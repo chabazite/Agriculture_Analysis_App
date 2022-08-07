@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from scripts.dataframe_compile import indicator_url_creation, create_format_dataframe
+from scripts.dataframe_compile import indicator_url_creation,  combine_dataframe, format_dataframe
 from scripts.additional_features import create_land_features, create_econ_features
 
 indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
@@ -30,7 +30,7 @@ def return_econ_figures():
     """
 
     dataframe_list = indicator_url_creation(indicators)
-    world_bank_df = create_format_dataframe(dataframe_list, world_bank_columns)
+    world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
     world_bank_df = create_econ_features(world_bank_df)
     

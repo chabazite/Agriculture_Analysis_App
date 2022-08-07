@@ -31,12 +31,10 @@ def population_page():
 	
 	#Parse the Post request for filter groups
 	if (request.method == 'POST') and request.form:
-		figures = return_pop_figures(request.form)
-
+		figures = return_pop_figures(request.form.get('Radio1'))
 	# GET request returns WORLD for initial page log
 	else:
-		figures = return_pop_figures(['World'])
-
+		figures = return_pop_figures('World')
     # plot ids for the html id tag
 	ids = ['figure-{}'.format(i) for i, _ in enumerate(figures)]
 
