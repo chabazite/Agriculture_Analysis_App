@@ -86,18 +86,22 @@ def return_pop_figures(data_filter_choice):
             x=0.01
         ))
 
-        graph_two = px.line(world_bank_df,
-        x ='date',
-        y = 'Urban',
-        title = 'Total Urban Population',
-        color = 'country'
+                #reshape for combined plot
+        df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
+
+        df_rural_urban = df_rural_urban[df_rural_urban['date']==2021]
+
+        graph_two= px.bar(df_rural_urban,
+            x ='country',
+            y = 'population_new',
+            color = 'urban_rural',
+            title = '2021 Total Rural & Urban Population Growth',
+            labels = {
+                "population_new": "population",
+                "urban_rural": "Location"
+            }
             )
-        graph_two.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
         graph_three = px.line(world_bank_df,
         x ='date',
@@ -112,22 +116,19 @@ def return_pop_figures(data_filter_choice):
             x=0.01
         ))
 
-            #reshape for combined plot
-        df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
-
-        df_rural_urban = df_rural_urban[df_rural_urban['date']==2019]
-
-        graph_four= px.bar(df_rural_urban,
-            x ='country',
-            y = 'population_new',
-            color = 'urban_rural',
-            title = 'Rural vs. Urban Population Growth',
-            labels = {
-                "population_new": "population",
-                "urban_rural": "Location"
-            }
+        graph_four = px.line(world_bank_df,
+        x ='date',
+        y = 'Urban',
+        title = 'Total Urban Population',
+        color = 'country'
             )
-        
+        graph_four.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
         figures = []
         figures.append(graph_one)
         figures.append(graph_two)
@@ -148,18 +149,22 @@ def return_pop_figures(data_filter_choice):
             x=0.01
         ))
 
-        graph_two = px.line(world_bank_df,
-        x ='date',
-        y = 'Urban',
-        title = 'Total Urban Population',
-        color = 'country'
+            #reshape for combined plot
+        df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
+
+        df_rural_urban = df_rural_urban[df_rural_urban['date']==2021]
+
+        graph_two= px.bar(df_rural_urban,
+            x ='country',
+            y = 'population_new',
+            color = 'urban_rural',
+            title = '2021 Totol Rural & Urban Population Growth',
+            labels = {
+                "population_new": "population",
+                "urban_rural": "Location"
+            }
             )
-        graph_two.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
         graph_three = px.line(world_bank_df,
         x ='date',
@@ -173,24 +178,22 @@ def return_pop_figures(data_filter_choice):
             xanchor="left",
             x=0.01
         ))
-
-
-            #reshape for combined plot
-        df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
-
-        df_rural_urban = df_rural_urban[df_rural_urban['date']==2019]
-
-        graph_four= px.bar(df_rural_urban,
-            x ='country',
-            y = 'population_new',
-            color = 'urban_rural',
-            title = 'Rural vs. Urban Population Growth',
-            labels = {
-                "population_new": "population",
-                "urban_rural": "Location"
-            }
-            )
         
+
+        graph_four = px.line(world_bank_df,
+        x ='date',
+        y = 'Urban',
+        title = 'Total Urban Population',
+        color = 'country'
+            )
+        graph_four.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
+
 
         figures = []
         figures.append(graph_one)
