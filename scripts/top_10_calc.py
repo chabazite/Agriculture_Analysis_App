@@ -121,8 +121,4 @@ def top_10_pop_vs_other(df):
 
     top_10_vs_other = top_10_vs_other.reset_index().rename(columns={'index': 'date'})
 
-    print(top_10_df)
-    print(world_df)
-    print(top_10_vs_other)
-
     return top_10_vs_other

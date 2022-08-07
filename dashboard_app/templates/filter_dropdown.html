@@ -5,7 +5,7 @@ id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
 aria-expanded="false">Filter by Country Groups</button>
 
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="check-boxes">
-  <form class="px-4 py-3" role="form" method="post" action="/population" id="form-filter">
+  <form class="px-4 py-3" role="form" method="post" action={{url}} id="form-filter">
   {% for group in data_filter_list %}
   <div class="form-check">
     {% if group in active_btns %}
