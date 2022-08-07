@@ -5,13 +5,13 @@ country_list = [ 'Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra
 
 def top_10_population_2021(df):
     """
-    _summary_
+    a function that filters for the top 10 largest countries by population and returns a list of those countries
 
     Args:
-        df (_type_): _description_
+        df (dataframe): the processed dataframe pulled from APIs
 
     Returns:
-        _type_: _description_
+        list: a list of countries that are top 10 in total population
     """
     df=df[df['country'].isin(country_list)]
     largest_10_population = df[df['date']==2021].nlargest(n=11,columns='population')
@@ -23,13 +23,13 @@ def top_10_population_2021(df):
 
 def top_10_rural_population_2021(df):
     """
-    _summary_
+    a function that filters for the top 10 largest countries by rural population and returns a list of those countries
 
     Args:
-        df (_type_): _description_
+        df (dataframe): the processed dataframe pulled from APIs
 
     Returns:
-        _type_: _description_
+        list: a list of countries that are top 10 in rural population
     """
     df=df[df['country'].isin(country_list)]
     largest_10_rural = df[df['date']==2021].nlargest(n=10,columns='Rural')
@@ -41,13 +41,13 @@ def top_10_rural_population_2021(df):
 
 def top_10_urban_population_2021(df):
     """
-    _summary_
+    a function that filters for the top 10 largest countries by urban population and returns a list of those countries
 
     Args:
-        df (_type_): _description_
+        df (dataframe): the processed dataframe pulled from APIs
 
     Returns:
-        _type_: _description_
+        list: a list of countries that are top 10 in urban population
     """
     df=df[df['country'].isin(country_list)]
     largest_10_urban = df[df['date']==2021].nlargest(n=10,columns='Urban')
@@ -59,13 +59,13 @@ def top_10_urban_population_2021(df):
 
 def top_10_ag_land_2018(df):
     """
-    _summary_
+    a function that filters for the top 10 largest countries by total agricultural land in sq. km and returns a list of those countries
 
     Args:
-        df (_type_): _description_
+        df (dataframe): the processed dataframe pulled from APIs
 
     Returns:
-        _type_: _description_
+        list: a list of countries that are top 10 in total agricultural land in sq km
     """
     df=df[df['country'].isin(country_list)]
     largest_10_land = df[df['date']==2018].nlargest(n=10,columns='agriculture_sqkm')
@@ -76,6 +76,16 @@ def top_10_ag_land_2018(df):
 
 
 def top_10_pop_vs_other(df, world_bank_columns):
+    """
+    _summary_
+
+    Args:
+        df (_type_): _description_
+        world_bank_columns (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     top_10_df=df[df['country'].isin(country_list)]
     world_df = df[df['country'].isin(['World'])]
 

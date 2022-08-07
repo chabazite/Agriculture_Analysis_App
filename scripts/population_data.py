@@ -71,6 +71,66 @@ def return_pop_figures(data_filter_choice):
         figures = []
         figures.append(graph_one)
         figures.append(graph_two)
+        
+    elif data_filter_choice == "Top 10 Highest Population vs. Other":
+        graph_one = px.line(world_bank_df,
+        x ='date',
+        y = 'population',
+        title = 'Total Population',
+        color = 'country'
+            )
+        graph_one.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
+        graph_two = px.line(world_bank_df,
+        x ='date',
+        y = 'Urban',
+        title = 'Total Urban Population',
+        color = 'country'
+            )
+        graph_two.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
+        graph_three = px.line(world_bank_df,
+        x ='date',
+        y = 'Rural',
+        title = 'Total Rural Population',
+        color = 'country'
+            )
+        graph_three.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
+        graph_four = px.line(world_bank_df,
+        x ='date',
+        y = 'Rural',
+        title = 'Total Rural Population',
+        color = 'country'
+            )
+        graph_four.update_layout(legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ))
+
+        figures = []
+        figures.append(graph_one)
+        figures.append(graph_two)
+        figures.append(graph_three)
+        figures.append(graph_four)        
+        
     else:
         graph_one = px.line(world_bank_df,
         x ='date',
