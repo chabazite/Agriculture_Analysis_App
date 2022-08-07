@@ -13,12 +13,8 @@ indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
 world_bank_columns = ['population', 'total_land_sqkm', 'forest_%','crop_%','agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%', 'male_employement_ag', 'female_employment_ag', 'fertilizer_consump','cereal_yield_kgPerHectare', 'total_gdp_ag_forestry_fishing']
 
 
-def top_filter(filter):
-    pass
 
-
-
-def return_econ_figures():
+def return_econ_figures(data_filter_choice):
     """
     creates four plotly visualizations
 
@@ -33,13 +29,14 @@ def return_econ_figures():
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
     world_bank_df = create_econ_features(world_bank_df)
-    
+    world_bank_df = format_dataframe (world_bank_df, data_filter_choice)
     # first chart plots 
     
     graph_one = px.line(world_bank_df,
         x ='date',
         y = 'cereal_yield_kgPerHectare',
         title = 'Total Yield Cereal Grain (per Hectare)',
+        color = 'country'
         )
     
     # second cahrt plots 
@@ -48,7 +45,8 @@ def return_econ_figures():
     graph_two= px.line(world_bank_df,
         x ='date',
         y = 'fertilizer_consump',
-        title = 'Total Fertilizer Consumption (kg per hectare of arable land)'
+        title = 'Total Fertilizer Consumption (kg per hectare of arable land)',
+        color = 'country'
         )
 
 
@@ -59,6 +57,7 @@ def return_econ_figures():
         x ='date',
         y = "cereal_yield_per_person",
         title = 'Cereal Production kg per Hectare per Person',
+        color = 'country'
         )
 
 
@@ -71,6 +70,7 @@ def return_econ_figures():
         x ='date',
         y = "fertilizer_use_per_person",
         title = 'Fertilizer User (kg per hectare per person)',
+        color = 'country'
         )
 
 
