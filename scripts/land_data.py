@@ -23,61 +23,148 @@ def return_land_figures(data_filter_choice):
         list (dict): list containing the four plotly visualizations
     """
 
+    #these function wrangle data from APIs
     dataframe_list = indicator_url_creation(indicators)
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
-    world_bank_df = format_dataframe (world_bank_df, data_filter_choice)
+    world_bank_df = format_dataframe(world_bank_df, data_filter_choice)
+  
+    
+    world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']
 
     
     # first chart plots 
+    if data_filter_choice == 'World':
+
+        # first chart plots 
+        graph_one = px.line(world_bank_df,
+            x ='date',
+            y = 'agriculture_sqkm',
+            title = 'Total Agricultural Land (sq km)',
+            color = 'country'
+            )
+
+        # second chart plots 
+
+        graph_two= px.scatter(world_bank_df, x="arable_sqkm", y="crop_sqkm",
+	             size="population", color="date",
+                     hover_name="country", log_x=False, size_max=60,
+                     title = 'Arable vs. Crop Land (sq.km) in terms of Population')
+
+
+        # third chart plots 
+
+        graph_three = px.line(world_bank_df,
+            x ='date',
+            y = "sq_km_agriculture_per_person",
+            title = 'Agricultural Land per Person',
+            color = 'country'
+            )
+
+
+        # fourth chart plots 
+
+        graph_four= px.line(world_bank_df,
+            x ='date',
+            y = "cereal_grain_sqkm",
+            title = 'Cereal Land (sqkm)',
+            color = 'country'
+            )
+
+        figures = []
+        figures.append(graph_one)
+        figures.append(graph_two)
+        figures.append(graph_three)
+        figures.append(graph_four)   
     
-    graph_one = px.line(world_bank_df,
-        x ='date',
-        y = 'forest_sqkm',
-        title = 'Total Forest (sq km)',
-        color = 'country'
-        )
+    elif data_filter_choice == "Top 10 Highest Population vs. Other":
+        graph_one = px.line(world_bank_df,
+            x ='date',
+            y = 'agriculture_sqkm',
+            title = 'Total Agricultural Land (sq km)',
+            color = 'country'
+            )
+
+        # second cahrt plots 
+
+        graph_two= px.scatter(
+           world_bank_df.query('date==2018'), x="arable_sqkm", y="crop_sqkm",
+	             size="population", color="country",
+                     hover_name="country", log_x=False, size_max=60,
+                     title = '2018 Arable vs. Crop Land (sq.km) in terms of Population')
+
+
+        # third chart plots 
+
+        graph_three = px.line(world_bank_df,
+            x ='date',
+            y = "sq_km_agriculture_per_person",
+            title = 'Agricultural Land per Person',
+            color = 'country'
+            )
+
+
+        # fourth chart plots 
+
+        graph_four= px.line(world_bank_df,
+            x ='date',
+            y = "cereal_grain_sqkm",
+            title = 'Cereal Land (sqkm)',
+            color = 'country'
+            )
+
+
+
+
+        figures = []
+        figures.append(graph_one)
+        figures.append(graph_two)
+        figures.append(graph_three)
+        figures.append(graph_four)
     
-    # second cahrt plots 
+    else:
+        graph_one = px.line(world_bank_df,
+            x ='date',
+            y = 'agriculture_sqkm',
+            title = 'Total Agricultural Land (sq km)',
+            color = 'country'
+            )
+
+        # second cahrt plots 
+
+        graph_two= px.scatter(
+           world_bank_df.query('date==2018'), x="arable_sqkm", y="crop_sqkm",
+	             size="population", color="country",
+                     hover_name="country", log_x=False, size_max=60,
+                     title = 'Arable vs. Crop Land (sq.km) in terms of Population')
 
 
-    graph_two= px.line(world_bank_df,
-        x ='date',
-        y = 'agriculture_sqkm',
-        title = 'Total Agricultural Land (sq km)',
-        color = 'country'
-        )
+        # third chart plots 
+
+        graph_three = px.line(world_bank_df,
+            x ='date',
+            y = "sq_km_agriculture_per_person",
+            title = 'Agricultural Land per Person',
+            color = 'country'
+            )
 
 
-    # third chart plots 
+        # fourth chart plots 
 
-    
-    graph_three = px.line(world_bank_df,
-        x ='date',
-        y = "sq_km_agriculture_per_person",
-        title = 'Agricultural Land per Person',
-        color = 'country'
-        )
-
-
-    # fourth chart plots 
-
-    
-
-    graph_four= px.line(world_bank_df,
-        x ='date',
-        y = "cereal_grain_sqkm",
-        title = 'Cereal Land (sqkm)',
-        color = 'country'
-        )
+        graph_four= px.line(world_bank_df,
+            x ='date',
+            y = "cereal_grain_sqkm",
+            title = 'Cereal Land (sqkm)',
+            color = 'country'
+            )
 
 
-        
 
-    figures = []
-    figures.append(graph_one)
-    figures.append(graph_two)
-    figures.append(graph_three)
-    figures.append(graph_four)
+
+        figures = []
+        figures.append(graph_one)
+        figures.append(graph_two)
+        figures.append(graph_three)
+        figures.append(graph_four)
 
     return figures
