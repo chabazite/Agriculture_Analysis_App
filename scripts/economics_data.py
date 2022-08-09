@@ -13,12 +13,8 @@ indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
 world_bank_columns = ['population', 'total_land_sqkm', 'forest_%','crop_%','agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%', 'male_employement_ag', 'female_employment_ag', 'fertilizer_consump','cereal_yield_kgPerHectare', 'total_gdp_ag_forestry_fishing']
 
 
-def top_filter(filter):
-    pass
 
-
-
-def return_econ_figures():
+def return_econ_figures(data_filter_choice):
     """
     creates four plotly visualizations
 
@@ -32,45 +28,44 @@ def return_econ_figures():
     dataframe_list = indicator_url_creation(indicators)
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
+    world_bank_df = format_dataframe(world_bank_df, data_filter_choice)
+
     world_bank_df = create_econ_features(world_bank_df)
-    
+    world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']
+
+
     # first chart plots 
-    
     graph_one = px.line(world_bank_df,
         x ='date',
         y = 'cereal_yield_kgPerHectare',
         title = 'Total Yield Cereal Grain (per Hectare)',
+        color = 'country'
         )
     
-    # second cahrt plots 
-
-
+    # second chart plots 
     graph_two= px.line(world_bank_df,
         x ='date',
-        y = 'fertilizer_consump',
-        title = 'Total Fertilizer Consumption (kg per hectare of arable land)'
+        y = 'Total_fertilizer',
+        title = 'Total Fertilizer Consumption (kg)',
+        color = 'country'
         )
 
 
     # third chart plots 
-
-
     graph_three = px.line(world_bank_df,
         x ='date',
         y = "cereal_yield_per_person",
         title = 'Cereal Production kg per Hectare per Person',
+        color = 'country'
         )
 
 
     # fourth chart plots 
-
-
-
-
     graph_four= px.line(world_bank_df,
         x ='date',
-        y = "fertilizer_use_per_person",
-        title = 'Fertilizer User (kg per hectare per person)',
+        y = "Total_fertilizer_per_person",
+        title = 'Fertilizer User (kg per person)',
+        color = 'country'
         )
 
 
