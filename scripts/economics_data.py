@@ -28,10 +28,13 @@ def return_econ_figures(data_filter_choice):
     dataframe_list = indicator_url_creation(indicators)
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
+    world_bank_df = format_dataframe(world_bank_df, data_filter_choice)
+
     world_bank_df = create_econ_features(world_bank_df)
-    world_bank_df = format_dataframe (world_bank_df, data_filter_choice)
+    world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']
+
+
     # first chart plots 
-    
     graph_one = px.line(world_bank_df,
         x ='date',
         y = 'cereal_yield_kgPerHectare',
@@ -39,20 +42,16 @@ def return_econ_figures(data_filter_choice):
         color = 'country'
         )
     
-    # second cahrt plots 
-
-
+    # second chart plots 
     graph_two= px.line(world_bank_df,
         x ='date',
-        y = 'fertilizer_consump',
-        title = 'Total Fertilizer Consumption (kg per hectare of arable land)',
+        y = 'Total_fertilizer',
+        title = 'Total Fertilizer Consumption (kg)',
         color = 'country'
         )
 
 
     # third chart plots 
-
-
     graph_three = px.line(world_bank_df,
         x ='date',
         y = "cereal_yield_per_person",
@@ -62,14 +61,10 @@ def return_econ_figures(data_filter_choice):
 
 
     # fourth chart plots 
-
-
-
-
     graph_four= px.line(world_bank_df,
         x ='date',
-        y = "fertilizer_use_per_person",
-        title = 'Fertilizer User (kg per hectare per person)',
+        y = "Total_fertilizer_per_person",
+        title = 'Fertilizer User (kg per person)',
         color = 'country'
         )
 

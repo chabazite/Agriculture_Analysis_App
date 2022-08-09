@@ -27,7 +27,7 @@ def return_land_figures(data_filter_choice):
     dataframe_list = indicator_url_creation(indicators)
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
-    world_bank_df = format_dataframe (world_bank_df, data_filter_choice)
+    world_bank_df = format_dataframe(world_bank_df, data_filter_choice)
   
     
     world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']

@@ -34,7 +34,8 @@ def create_econ_features(world_bank_df):
 
     #transform features
     world_bank_df['cereal_yield_per_person'] = world_bank_df['cereal_yield_kgPerHectare'] / world_bank_df['population']
-    world_bank_df['fertilizer_use_per_person'] = world_bank_df['fertilizer_consump'] / world_bank_df['population']
- 
+
+    world_bank_df['Total_fertilizer_per_person'] = (world_bank_df['fertilizer_consump'] *world_bank_df['arable_sqkm']*100)/ world_bank_df['population']
+    world_bank_df['Total_fertilizer'] = (world_bank_df['fertilizer_consump'] *world_bank_df['arable_sqkm']*100)
 
     return world_bank_df
