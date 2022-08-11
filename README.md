@@ -139,7 +139,7 @@ Check out my medium post <a href="#">here</a>
 <br>
 <a href="#" target="_blank">not active medium post</a> as I go into further detail regarding the process and my answers for the questions in the <a href="#Business_Case">business case</a>.
 
- Here is a link to the <a href="#" target="_blank">Not active app</a>. 
+ Here is a link to the <a href="https://agricultural-analysis.herokuapp.com/" target="_blank">app</a>. 
 
 </details>
   
