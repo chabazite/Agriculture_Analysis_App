@@ -13,7 +13,7 @@ indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
 start_time = time.time()
 
 async def main():
-    async with aiohttp.ClientSession as session:
+    async with aiohttp.ClientSession() as session:
         tasks = []
         for indicator in indicators:
             task = asyncio.ensure_future(get_indicator_data(session, indicator))
@@ -30,7 +30,7 @@ async def get_indicator_data(session, indicator):
 
         async with session.get(url, params=payload) as response:    
             results_data = await response.json()
-            data+=results_data.json()[1]
+            data+=results_data[1]
 
     return pd.DataFrame(data)
 
