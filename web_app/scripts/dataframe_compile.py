@@ -84,11 +84,11 @@ def indicator_url_creation(indicators):
         
         return dataframe_list
 
-    async def get_indicator_data(session, indicator,page):
+    async def get_indicator_data(session, indicator):
         url = 'http://api.worldbank.org/v2/countries/indicators/' + indicator 
 
         data = []
-        for page in range(1:18):
+        for page in range(1,18):
             payload = {'format': 'json', 'per_page': '1000', 'date':'1960:2022', 'page':page} 
             
             async with session.get(url, params=payload) as response:    
