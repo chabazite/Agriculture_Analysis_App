@@ -72,27 +72,31 @@ def indicator_url_creation(indicators):
     Returns:
         list: a list of all the dataframes ingested from the API, appended into a list 
     """
+
+
+
+
     async def main():
         async with aiohttp.ClientSession() as session:
             tasks = []
             for indicator in indicators:
-                task = asyncio.ensure_future(get_indicator_data(session, indicator))
-                tasks.append(task) 
+                for page in range(1,18):
+                    task = asyncio.ensure_future(get_indicator_data(session, indicator,page))
+                    tasks.append(task) 
 
             dataframe_list = await asyncio.gather(*tasks)
         
         return dataframe_list
 
-    async def get_indicator_data(session, indicator):
+    async def get_indicator_data(session, indicator,page):
         url = 'http://api.worldbank.org/v2/countries/indicators/' + indicator 
 
         data = []
-        for page in range(1,18):
-            payload = {'format': 'json', 'per_page': '1000', 'date':'1960:2022', 'page':page} 
 
-            async with session.get(url, params=payload) as response:    
-                results_data = await response.json()
-                data+=results_data[1]
+        payload = {'format': 'json', 'per_page': '1000', 'date':'1960:2022', 'page':page} 
+        async with session.get(url, params=payload) as response:    
+            results_data = await response.json()
+            data+=results_data[1]
 
         return pd.DataFrame(data)
 
