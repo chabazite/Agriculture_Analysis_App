@@ -29,7 +29,6 @@ def return_econ_figures(data_filter_choice):
     world_bank_df = combine_dataframe(dataframe_list, world_bank_columns)
     world_bank_df = create_land_features(world_bank_df)
     world_bank_df = format_dataframe(world_bank_df, data_filter_choice)
-    world_bank_df.drop(columns=['countryiso3code'], inplace=True, axis=1)
     world_bank_df = create_econ_features(world_bank_df)
     world_bank_df['sq_km_agriculture_per_person'] =world_bank_df['agriculture_sqkm']/world_bank_df['population']
 
@@ -58,10 +57,10 @@ def return_econ_figures(data_filter_choice):
 
 
     # third chart plots 
-    graph_three = px.line(world_bank_df,
-        x ='date',
-        y = "cereal_yield_per_person",
-        title = 'Cereal Production kg per Hectare per Person',
+    graph_three = px.scatter(world_bank_df,
+        x ='population',
+        y = "cereal_yield_kgPerHectare",
+        title = 'Cereal Production kg per Hectare',
         color = 'country',
          labels = {
                 "cereal_yield_per_person": "Total Yeild of Cereal Grain (kg per hectare per person)"
@@ -70,11 +69,13 @@ def return_econ_figures(data_filter_choice):
 
 
     # fourth chart plots 
-    graph_four= px.line(world_bank_df,
-        x ='date',
-        y = "Total_fertilizer_per_person",
-        title = 'Fertilizer User (kg per person)',
-        color = 'country',
+    graph_four= px.scatter_3d(world_bank_df,
+        x ='Total_fertilizer',
+        y = "cereal_yield_kgPerHectare",
+        z='total_gdp_ag_forestry_fishing',
+        title = 'GDP vs. Fertilizer Use vs Cereal Yield',
+        color = 'population',
+        symbol = 'country',
          labels = {
                 "Total_fertilizer_per_person": "Total Fertilizer (kg per person)"
             }

@@ -30,7 +30,6 @@ def return_issues_figures(data_filter_choice):
     world_bank_df = create_land_features(world_bank_df)
     world_bank_df = create_econ_features(world_bank_df)
     world_bank_df = format_dataframe (world_bank_df, data_filter_choice)
-    world_bank_df.drop(columns=['countryiso3code'], inplace=True, axis=1)
     
     # first chart plots 
     
@@ -44,9 +43,9 @@ def return_issues_figures(data_filter_choice):
     # second cahrt plots 
 
 
-    graph_two= px.line(world_bank_df,
-        x ='date',
-        y = 'CO2_emmission',
+    graph_two= px.scatter(world_bank_df,
+        x ='forest_sqkm',
+        y = 'Total_Greenhouse_gases',
         title = 'Total CO2_emmission',
         color = 'country'
         )
@@ -55,8 +54,8 @@ def return_issues_figures(data_filter_choice):
     # third chart plots 
 
 
-    graph_three = px.line(world_bank_df,
-        x ='date',
+    graph_three = px.scatter(world_bank_df,
+        x ='Rural',
         y = "Poverty_under1_90_per_day",
         title = 'Poverty Rate under $1.90 a day',
         color = 'country'
@@ -68,8 +67,8 @@ def return_issues_figures(data_filter_choice):
 
 
 
-    graph_four= px.line(world_bank_df,
-        x ='date',
+    graph_four= px.scatter(world_bank_df,
+        x ='Poverty_under1_90_per_day',
         y = "mortality_under5",
         title = 'Mortality under 5 years old',
         color = 'country'
