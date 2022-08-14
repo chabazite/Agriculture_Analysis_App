@@ -1,7 +1,7 @@
 import pandas as pd
 import aiohttp
 import asyncio
-from scripts.top_10_calc import top_10_population_2021, top_10_rural_population_2021, top_10_urban_population_2021, top_10_ag_land_2018,top_10_pop_vs_other
+from scripts.top_10_calc import top_10_population_2021, top_10_rural_population_2021, top_10_urban_population_2021, top_10_ag_land_2018,top_10_pop_vs_other, just_countries
 
 
 def data_filter(df, data_filter_choice):
@@ -26,9 +26,10 @@ def data_filter(df, data_filter_choice):
         df = top_10_rural_population_2021(df)
     elif data_filter_choice ==   'Top 10 Largest Agricultural Land (sq. km)':
         df = top_10_ag_land_2018(df)
-    else:
+    elif data_filter_choice == 'Top 10 Largest Population vs. Other':
         df = top_10_pop_vs_other(df)
-
+    else:
+        df = just_countries(df)
     return df
 
 
@@ -46,7 +47,7 @@ def data_wrangle(df):
     """
 
 
-    df.drop(columns=['countryiso3code','indicator','obs_status','decimal', 'unit'], inplace=True, axis=1)
+    df.drop(columns=['indicator','obs_status','decimal', 'unit'], inplace=True, axis=1)
 
     df["date"] = pd.to_datetime(df["date"]).dt.year
     df["date"] = pd.to_numeric(df["date"])
@@ -72,6 +73,8 @@ def indicator_url_creation(indicators):
     Returns:
         list: a list of all the dataframes ingested from the API, appended into a list 
     """
+
+    
     async def main():
         async with aiohttp.ClientSession() as session:
             tasks = []
@@ -129,7 +132,7 @@ def combine_dataframe(dataframe_list, world_bank_columns):
 
     return world_bank_df
 
-def format_dataframe(world_bank_df, data_filter_choice):
+def format_dataframe(world_bank_df, data_filter_choice="Countries"):
     """
     a function that creates new columns, drops unecessary ones, and filters the data based on user input.
 

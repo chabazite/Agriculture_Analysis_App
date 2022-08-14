@@ -125,3 +125,19 @@ def top_10_pop_vs_other(df):
     top_10_vs_other.replace(0, np.nan, inplace=True)
 
     return top_10_vs_other
+
+
+def just_countries(df):
+    """
+    _summary_
+
+    Args:
+        df (_type_): _description_
+        country_list (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    df=df[df['country'].isin(country_list)]
+
+    return df
