@@ -1,6 +1,3 @@
-import requests
-import pandas as pd
-import numpy as np
 import plotly.express as px
 from scripts.dataframe_compile import indicator_url_creation, combine_dataframe,format_dataframe
 from scripts.additional_features import create_land_features

@@ -1,6 +1,3 @@
-import requests
-import pandas as pd
-import numpy as np
 import plotly.express as px
 from scripts.dataframe_compile import indicator_url_creation,  combine_dataframe, format_dataframe
 from scripts.additional_features import create_land_features, create_econ_features
@@ -74,21 +71,15 @@ def return_econ_figures(data_filter_choice):
         x ='Total_fertilizer',
         y = "cereal_yield_kgPerHectare",
         z='total_gdp_ag_forestry_fishing',
-        title = 'GDP (Ag/Forestry/Fishing) vs. Fertilizer Consumption vs Cereal Yield',
-        color = 'population',
-        symbol = 'country',
+        title = 'Ag GDP vs. Fertilizer Consumption vs Cereal Yield',
+        color = 'country',
          labels = {
                 "Total_fertilizer": "Fertilizer (kg)",
-                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)",
-                "total_gdp_ag_forestry_fishing": "GDP (Ag/Forestry/Fishing)"
+                "cereal_yield_kgPerHectare": "Cereal (kg per Hectare)",
+                "total_gdp_ag_forestry_fishing": "GDP"
             }
         )
-    graph_four.update_layout(legend=dict(
-        yanchor="top",
-        y=0.99,
-        xanchor="left",
-        x=0.01
-        ))
+
 
 
     figures = []
