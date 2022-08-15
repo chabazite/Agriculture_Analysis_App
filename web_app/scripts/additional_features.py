@@ -51,8 +51,26 @@ def create_issue_features(world_bank_df):
         (_type_): _description_
     """
     #transform features
-    world_bank_df['cereal_yield_per_person'] = world_bank_df    ['cereal_yield_kgPerHectare'] / world_bank_df['population']
-    world_bank_df['Total_fertilizer_per_person'] = (world_bank_df['fertilizer_consump'] *world_bank_df['arable_sqkm']*100)/ world_bank_df['population']
+    world_bank_df['Population_under_5_50_per_day'] = world_bank_df    ['%Poverty_under5_50_per_day'] * world_bank_df['population']
+ 
+    world_bank_df['Total_mortality_under_5'] = world_bank_df    ['mortality_under5']/1000 * world_bank_df['population']
+  
+
+    return world_bank_df
+
+
+def mortality_rate(world_bank_df):
+    """
+    _summary_
+    Args:
+        world_bank_df (_type_): _description_
+    Return:
+        (_type_): _description_
+    """
+    #transform features 
+    world_bank_df['Total_mortality_under_5'] = world_bank_df['Total_mortality_under_5'] / world_bank_df['population'] * 1000
+
+    world_bank_df['Poverty_Rate'] = world_bank_df['Population_under_5_50_per_day'] / world_bank_df['population']
   
 
     return world_bank_df

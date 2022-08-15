@@ -1,11 +1,12 @@
 from dashboard_app import app
-from flask import render_template, request, Response, jsonify
+from flask import render_template, request
 import json,  plotly
 from scripts.home_data import return_index_figure
 from scripts.population_data import return_pop_figures
 from scripts.economics_data import return_econ_figures
 from scripts.land_data import return_land_figures
 from scripts.issues_data import return_issues_figures
+
 
 data_filter_list = ['World','Top 10 Largest Population', 'Top 10 Largest Urban Population', 'Top 10 Largest Rural Population', 'Top 10 largest agricultural land (sq. km)', "Top 10 Largest Population vs. Other"]
 
