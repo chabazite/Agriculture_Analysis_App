@@ -92,16 +92,16 @@ Check out my medium post <a href="#">here</a>
 <br>
 
       
-    ├──AWS Lightsail
-    ├──Docker
+    ├──Heroku
     ├──Python
         ├──Numpy
         ├──Pandas
         ├──Flask
-        ├──Requests
+        ├──aiosync
         ├──Matplotlib
         ├──Seaborn
-        └──
+        ├──aiohttp
+        └──plotly
  
  ------------
  </details>
