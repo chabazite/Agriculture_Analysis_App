@@ -40,7 +40,7 @@ def return_econ_figures(data_filter_choice):
         title = 'Total Yield in Cereal Grain (kg per Hectare)',
         color = 'country',
          labels = {
-                "cereal_yield_kgPerHectare": "Total Yield of Cereal Grain (kg per Hectare)"
+                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)"
             }
         )
     
@@ -58,12 +58,13 @@ def return_econ_figures(data_filter_choice):
 
     # third chart plots 
     graph_three = px.scatter(world_bank_df,
-        x ='population',
+        x ='Total_fertilizer',
         y = "cereal_yield_kgPerHectare",
-        title = 'Cereal Production kg per Hectare',
+        title = 'Cereal Production vs Fertilizer Consumption',
         color = 'country',
          labels = {
-                "cereal_yield_per_person": "Total Yeild of Cereal Grain (kg per hectare per person)"
+                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)",
+                "Total_fertilizer": "Fertilizer (kg)"
             }
         )
 
@@ -73,14 +74,21 @@ def return_econ_figures(data_filter_choice):
         x ='Total_fertilizer',
         y = "cereal_yield_kgPerHectare",
         z='total_gdp_ag_forestry_fishing',
-        title = 'GDP vs. Fertilizer Use vs Cereal Yield',
+        title = 'GDP (Ag/Forestry/Fishing) vs. Fertilizer Consumption vs Cereal Yield',
         color = 'population',
         symbol = 'country',
          labels = {
-                "Total_fertilizer_per_person": "Total Fertilizer (kg per person)"
+                "Total_fertilizer": "Fertilizer (kg)",
+                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)",
+                "total_gdp_ag_forestry_fishing": "GDP (Ag/Forestry/Fishing)"
             }
         )
-
+    graph_four.update_layout(legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+        ))
 
 
     figures = []
