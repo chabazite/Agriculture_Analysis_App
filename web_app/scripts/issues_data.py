@@ -34,17 +34,23 @@ def return_issues_figures(data_filter_choice):
         x ='date',
         y = 'Total_Greenhouse_gases',
         title = 'Total Greenhouse Gases (kt of CO2 equivalent)',
-        color = 'country'
+        color = 'country',
+        labels = {
+                "Total_Greenhouse_gases": "Cereal Grain (kg per Hectare)"
+            }
         )
     
     # second cahrt plots 
 
 
     graph_two= px.scatter(world_bank_df,
-        x ='forest_sqkm',
+        x ='agriculture_sqkm',
         y = 'Total_Greenhouse_gases',
         title = 'Total CO2_emmission',
-        color = 'country'
+        color = 'country',
+        labels = {
+                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)"
+            }
         )
 
 
@@ -55,7 +61,10 @@ def return_issues_figures(data_filter_choice):
         x ='Rural',
         y = "Poverty_under1_90_per_day",
         title = 'Poverty Rate under $1.90 a day',
-        color = 'country'
+        color = 'country',
+        labels = {
+                "cereal_yield_kgPerHectare": "Cereal Grain (kg per Hectare)"
+            }
         )
 
 
@@ -67,8 +76,12 @@ def return_issues_figures(data_filter_choice):
     graph_four= px.scatter(world_bank_df,
         x ='Poverty_under1_90_per_day',
         y = "mortality_under5",
-        title = 'Mortality under 5 years old',
-        color = 'country'
+        title = 'Mortality vs Poverty',
+        color = 'country',
+        labels = {
+                "mortality_under5": "Mortality Rate under 5 (per 1000 births)",
+                "Poverty_under1_90_per_day": "Poverty Rate (under $1.90 a day)"
+            }
         )
 
 
