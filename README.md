@@ -53,16 +53,35 @@ How has the Green Revolution changed humanity and the way we steward our limited
     ├── .gitignore
     ├── README.md          <- The top-level README for developers using this project.
     │
-    ├── agenv                <- Virtual Environment for the project
+    ├── agenv              <- Virtual Environment for the project
     │
-    ├── dashboard_app      <- Folder that contains all deployment needs
-    │   ├── images         <- directory of images for the app
-    │   ├── templates      <- html webpages
-    │       ├── index.html    <- 
-    │       └──               <- 
-    │   ├── __init__.py    <- 
-    │   ├── routes.py      <- 
-    │   └──                <- 
+    ├── web_app
+    │   ├── dashboard_app       <- Folder that contains all deployment needs
+    │          ├── statics             <- directory of images for the app
+
+    │          ├── templates      <- html webpages
+               │    ├── __init__.py              <- 
+    │          │    ├── additional_features.py   <- 
+    │          │    ├── dataframe_compile.py     <- 
+    │          │    ├── economics_data.py        <- 
+    │          │    ├── home_data.py             <- 
+    │          │    ├── issues_data.py           <- 
+    │          │    ├── population_data.py       <-            
+    │          │    └── top_10_calc.py           <-
+    │          ├── __init__.py    <- 
+    │          └── routes.py               <- 
+    │   ├── scripts          
+        │      ├── __init__.py              <- 
+    │          ├── additional_features.py   <- 
+    │          ├── dataframe_compile.py     <- 
+    │          ├── economics_data.py        <- 
+    │          ├── home_data.py             <- 
+    │          ├── issues_data.py           <- 
+    │          ├── population_data.py       <-            
+    │          └── top_10_calc.py           <-
+        ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g. 
+    │   ├── Procfile       <- 
+    │   └── app.py               <- 
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -73,7 +92,7 @@ How has the Green Revolution changed humanity and the way we steward our limited
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    
     │                         generated with `pip freeze > requirements.txt`
     │
     └── setup.py           <- makes project pip installable (pip install -e .) so src can be imported 

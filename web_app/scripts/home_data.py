@@ -2,9 +2,9 @@ import pandas as pd
 import plotly.express as px
 from scripts.dataframe_compile import indicator_url_creation, combine_dataframe,format_dataframe
 
-world_bank_columns = ['population']
+indicators = ['SP.POP.TOTL','SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
 
-indicators = ['SP.POP.TOTL']
+world_bank_columns = ['population', 'rural_pop_%','urban_pop_%']
 
   
 def return_index_figure():
