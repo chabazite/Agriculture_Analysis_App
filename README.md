@@ -55,33 +55,36 @@ How has the Green Revolution changed humanity and the way we steward our limited
     │
     ├── agenv              <- Virtual Environment for the project
     │
-    ├── web_app
-    │   ├── dashboard_app       <- Folder that contains all deployment needs
-    │          ├── statics             <- directory of images for the app
-
-    │          ├── templates      <- html webpages
-               │    ├── __init__.py              <- 
-    │          │    ├── additional_features.py   <- 
-    │          │    ├── dataframe_compile.py     <- 
-    │          │    ├── economics_data.py        <- 
-    │          │    ├── home_data.py             <- 
-    │          │    ├── issues_data.py           <- 
-    │          │    ├── population_data.py       <-            
-    │          │    └── top_10_calc.py           <-
-    │          ├── __init__.py    <- 
-    │          └── routes.py               <- 
+    ├── web_app            <- Folder that contains all deployment needs
+    │   ├── dashboard_app       
+    │   │      ├── statics                  <- directory of images for the app
+    │   │      │    ├── githublogo.png            <- github logo 
+    │   │      │    ├── linkedinlogo.png          <- linkedin logo
+    │   │      │    └── mediumlogo.png            <- medium logo
+    │   │      ├── templates                <- html folder structure
+    │   │      │    ├── base.html                 <- basic structure for all html templates
+    │   │      │    ├── economics.html            <- economics page
+    │   │      │    ├── filter_dropdown.html      <- abstracted filter dropdown item for all html pages
+    │   │      │    ├── global_issues.html        <- global issue page
+    │   │      │    ├── index.html                <- index home page
+    │   │      │    ├── land_use.html             <- land use page
+    │   │      │    ├── nav.html                  <- abstracted navigation bar
+    │   │      │    ├── population.html           <- population page  
+    │   │      │    └── sidebar.html              <- abstracted sidebar item
+    │   │      ├── __init__.py              <- import Flask from Flask and set app name
+    │   │      └── routes.py                <- routes all the pages for the flask app
     │   ├── scripts          
-        │      ├── __init__.py              <- 
-    │          ├── additional_features.py   <- 
-    │          ├── dataframe_compile.py     <- 
-    │          ├── economics_data.py        <- 
-    │          ├── home_data.py             <- 
-    │          ├── issues_data.py           <- 
-    │          ├── population_data.py       <-            
-    │          └── top_10_calc.py           <-
-        ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g. 
-    │   ├── Procfile       <- 
-    │   └── app.py               <- 
+    │   │      ├── __init__.py              <- allows importation of scripts
+    │   │      ├── additional_features.py   <- contains extract calculation functions for each page
+    │   │      ├── dataframe_compile.py     <- contains functions for all dataframe wrangling
+    │   │      ├── economics_data.py        <- function for economics page graphs
+    │   │      ├── home_data.py             <- function for main page graph
+    │   │      ├── issues_data.py           <- function for global issues page graphs
+    │   │      ├── population_data.py       <- function for population page graphs           
+    │   │      └── top_10_calc.py           <- functions for the filter dropdown
+    │   ├── requirements.txt            <- The requirements file for reproducing the analysis environment, generated with `pip freeze > requirements.txt`
+    │   ├── Procfile                    <- a file that specifies the commands that are executed. by an Heroku app on startup
+    │   └── app.py                      <- serves the app
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -92,8 +95,8 @@ How has the Green Revolution changed humanity and the way we steward our limited
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
-    
-    │                         generated with `pip freeze > requirements.txt`
+    │
+    │                         
     │
     └── setup.py           <- makes project pip installable (pip install -e .) so src can be imported 
 
