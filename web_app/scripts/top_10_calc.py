@@ -129,14 +129,14 @@ def top_10_pop_vs_other(df):
 
 def just_countries(df):
     """
-    _summary_
+    function that filters a dataframe for just the countries in a list.
 
     Args:
-        df (_type_): _description_
-        country_list (_type_): _description_
+        df (dataframe): dataframe from API requests
+        country_list (list): a list of countries
 
     Returns:
-        _type_: _description_
+        dataframe: filtered dataframe
     """
     df=df[df['country'].isin(country_list)]
 

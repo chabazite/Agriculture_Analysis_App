@@ -1,12 +1,12 @@
 def create_land_features(world_bank_df):
     """
-    _summary_
+    function to create addition features specific to land_use. Will drop columns that are now useless based on the updated features (% columns)
 
     Args:
-        world_bank_df (_type_): _description_
+        world_bank_df (dataframe): input dataframe from APIs
     
     Return:
-        (_type_): _description_
+        (dataframe): a dataframe with new land-use features
     """
 
 
@@ -22,13 +22,13 @@ def create_land_features(world_bank_df):
 
 def create_econ_features(world_bank_df):
     """
-    _summary_
+    function that creates one new feature for the economic page
 
     Args:
-        world_bank_df (_type_): _description_
+        world_bank_df (dataframe): input dataframe from APIs
     
     Return:
-        (_type_): _description_
+        (dataframe): a dataframe with new economic features
     """
 
     #transform features
@@ -40,11 +40,11 @@ def create_econ_features(world_bank_df):
 
 def create_issue_features(world_bank_df):
     """
-    _summary_
+    function that prepares the poverty and mortality rates for the combination of data in the top10vsother dataframe. by turning them into pure counts based on population
     Args:
-        world_bank_df (_type_): _description_
+        world_bank_df (dataframe): input dataframe from APIs
     Return:
-        (_type_): _description_
+        (dataframe): a dataframe with new features for global issues
     """
     #transform features
     world_bank_df['Population_under_5_50_per_day'] = world_bank_df    ['%Poverty_under5_50_per_day'] * world_bank_df['population']
@@ -57,11 +57,11 @@ def create_issue_features(world_bank_df):
 
 def mortality_rate(world_bank_df):
     """
-    _summary_
+    function that recreates the mortality rate and poverty rate after the creation of the Top10vsother dataframe.
     Args:
-        world_bank_df (_type_): _description_
+        world_bank_df (dataframe): input dataframe from APIs
     Return:
-        (_type_): _description_
+        (dataframe): a dataframe that returns new features for poverty and mortality
     """
     #transform features 
     world_bank_df['Total_mortality_under_5'] = world_bank_df['Total_mortality_under_5'] / world_bank_df['population'] * 1000
