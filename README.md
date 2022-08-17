@@ -92,14 +92,8 @@ How has the Green Revolution changed humanity and the way we steward our limited
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    │
-    │                         
-    │
-    └── setup.py           <- makes project pip installable (pip install -e .) so src can be imported 
-
+    └── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+        └── figures        <- Generated graphics and figures to be used in reporting
 --------
   </details>   
 
@@ -135,8 +129,7 @@ How has the Green Revolution changed humanity and the way we steward our limited
  2. API Data Wrangling
       * 2.0 Indicators and Requests
       * 2.1 Combining Dataframes
-      * 2.2 Top 10 vs. Other Country Dataframe
-
+      * 2.2 Top 10 vs. Other Country Dataframes
  3. Exploratory Data Analysis
       * 3.0 Importing
       * 3.1 Question 1: Population
