@@ -63,7 +63,7 @@ def return_land_figures(data_filter_choice):
             title = 'Agricultural Land per Person',
             color = 'country',
             labels = {
-                "sq_km_agriculture_per_person": "Agricultural Land (sq. km) per person"
+                "sq_km_agriculture_per_person": "Agricultural Land (sq. km per person)"
             }
             )
 
@@ -76,7 +76,7 @@ def return_land_figures(data_filter_choice):
             title = 'Cereal Land (sq. km)',
             color = 'country',
             labels = {
-                "creal_grain_sqkm": "Cereal Crop Land (sq. km)"
+                "cereal_grain_sqkm": "Cereal Crop Land (sq. km)"
             }
             )
 
@@ -155,7 +155,7 @@ def return_land_figures(data_filter_choice):
             }
             )
 
-        # second cahrt plots 
+        # second chart plots 
 
         graph_two= px.scatter(
            world_bank_df.query('date==2018'), x="arable_sqkm", y="crop_sqkm",
@@ -192,8 +192,6 @@ def return_land_figures(data_filter_choice):
                 "creal_grain_sqkm": "Cereal Crop Land (sq. km)"
             }
             )
-
-
 
 
         figures = []

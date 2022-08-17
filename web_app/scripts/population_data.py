@@ -34,12 +34,7 @@ def return_pop_figures(data_filter_choice):
         title = 'Total Population Growth',
         color = 'country'
             )
-        graph_one.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
         # second cahrt plots the total urban vs rural population of the world from 1960  to current available data
         
         #reshape for combined plot
@@ -55,13 +50,7 @@ def return_pop_figures(data_filter_choice):
                 "urban_rural": "Location"
             }
             )
-        graph_two.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
-        
+
 
         figures = []
         figures.append(graph_one)
@@ -74,12 +63,7 @@ def return_pop_figures(data_filter_choice):
         title = 'Total Population Growth',
         color = 'country'
             )
-        graph_one.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
                 #reshape for combined plot
         df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
@@ -107,28 +91,18 @@ def return_pop_figures(data_filter_choice):
                 "Rural": "population"
             }
             )
-        graph_three.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
         graph_four = px.line(world_bank_df,
         x ='date',
         y = 'Urban',
-        title = 'Total Urban Population GRowth',
+        title = 'Total Urban Population Growth',
         color = 'country',
         labels = {
                 "Urban": "population"
             }
             )
-        graph_four.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
         figures = []
         figures.append(graph_one)
@@ -143,12 +117,7 @@ def return_pop_figures(data_filter_choice):
         title = 'Total Population',
         color = 'country'
             )
-        graph_one.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
             #reshape for combined plot
         df_rural_urban = world_bank_df.melt(id_vars = ['country','date'], value_vars=['Urban','Rural'],var_name = 'urban_rural', value_name = 'population_new')
@@ -176,13 +145,7 @@ def return_pop_figures(data_filter_choice):
                 "Rural": "population"
             }
             )
-        graph_three.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
-        
+
 
         graph_four = px.line(world_bank_df,
         x ='date',
@@ -193,12 +156,7 @@ def return_pop_figures(data_filter_choice):
                 "Urban": "population"
             }
             )
-        graph_four.update_layout(legend=dict(
-            yanchor="top",
-            y=0.99,
-            xanchor="left",
-            x=0.01
-        ))
+
 
 
 

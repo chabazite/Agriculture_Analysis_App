@@ -17,7 +17,7 @@ def top_10_population_2021(df):
         dataframe: the finalized dataframe, filtered for countries that are top 10 in total population
     """
     df=df[df['country'].isin(country_list)]
-    largest_10_population = df[df['date']==2021].nlargest(n=11,columns='population')
+    largest_10_population = df[df['date']==2021].nlargest(n=10,columns='population')
 
     largest_10_list = [country for country in largest_10_population['country']]
 

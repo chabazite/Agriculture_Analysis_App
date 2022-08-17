@@ -146,17 +146,19 @@ How has the Green Revolution changed humanity and the way we steward our limited
 <summary>Show/Hide</summary>
 <br>
 
+These are just a few insights from the analysis:
+
 * Question 1: Population
-   * It is interesting to note that around 2007 the world population for rural inhabitats begin to slow and then stop entirely, while urban population continues to climb. When breaking this down by country it is easy to see the biggest impact here is China.
+   * It is interesting to note that around 2007 the world population for rural inhabitats begin to slow and then almost stop entirely, while urban population continues to climb. When breaking this down by country it is easy to see the biggest impact here is China, which began to lose rural population since 1992. We can also see that China and India are the two outlier countries when it comes to populations. This causes the Top 10 largest countries in populations to have a larger combined population than the rest of the world's countries combined.
 
 * Question 2: Land Development
-   * The Top 10 largest populated countries have more arable land than all other countries combined.
+   * Interesting that Indonesia has a lot of crop land, but very little arable land. The Top 10 largest countries are mainly arable land, while the other nations are mainly crop land. Agricultural land per person has also been decreasing. This makes sense, there isn't much increase in actual agricultural land, but population is moving up at an increasing pace. Finally, cereal land use has been increasing over time, this makes sense considering the importance of these grains in human and livestock nutrition.
 
 * Question 3: Agricultural Practices
-   * There is clearly an increase in fertilizer use. This makes sense considering the green revolution's focus was on the advent of chemical fertilizers. There is an interesting relationship between GDP, Fertilizer Use, and ...
+   * There is clearly an increase in fertilizer use. This makes sense considering the green revolution's focus was on the advent of chemical fertilizers. There is also a linear relationship for the use of fertilizer with increase in cereal grain yield. There is an interesting relationship between GDP, fertilizer Use, and cereal grain yield 
 
 * Question 4: World Issues
-   * It is clear that Greenhouse Gases are still going up at a steep rate. There also appears to be a releationship between poverty and mortality under 5, which is expected. Both have gone down since 1990s. 
+   * It is clear that Greenhouse Gases are still going up at a steep rate. There also appears to be a relationship between poverty and mortality under 5, which is expected. When looking at the top 10 most populated countries vs all other nations, there is a clear clustering for poverty vs. rural. Top 10 nations have low poverty and high rural population, while other nations have higher poverty and lower rural population. Additionally, between the two there are two clusters with mortality and poverty, with the top 10 nations having lower poverty and slightly larger range of mortality under 5, vs. the other nations that have higher average mortality rates under five and higher poverty rates. The good news is both groups have decreased in mortality rates since 1960.  
 
 
 
