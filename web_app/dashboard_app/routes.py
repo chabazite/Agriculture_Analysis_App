@@ -1,5 +1,5 @@
 from dashboard_app import app
-from flask import render_template, request, Response, jsonify
+from flask import render_template, request
 import json,  plotly
 from scripts.home_data import return_index_figure
 from scripts.population_data import return_pop_figures
