@@ -135,10 +135,10 @@ How has the Green Revolution changed humanity and the way we steward our limited
    * It is interesting to note that around 2007 the world population for rural inhabitats begin to slow and then stop entirely, while urban population continues to climb. When breaking this down by country it is easy to see the biggest impact here is China.
 
 * Question 2: Land Development
-   * 
+   * The Top 10 largest populated countries have more arable land than all other countries combined.
 
 * Question 3: Agricultural Practices
-   * 
+   * There is clearly an increase in fertilizer use. This makes sense considering the green revolution's focus was on the advent of chemical fertilizers. There is an interesting relationship between GDP, Fertilizer Use, and ...
 
 * Question 4: World Issues
    * It is clear that Greenhouse Gases are still going up at a steep rate. There also appears to be a releationship between poverty and mortality under 5, which is expected. Both have gone down since 1990s. 
