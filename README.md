@@ -22,14 +22,10 @@ While these revolutions have paved the way for our population growth, none of th
 
 How has the Green Revolution changed humanity and the way we steward our limited and ultimate resource of land?
 
-1. What kind of change has the world seen in population ?
+1. What kind of change has the world seen in population?
 2. How has land development changed?
-3. How have living conditions been impacted?
-4. How has Agriculture demand and economics changed? 
-5. How have major world issues changed?
-
-
-Check out my medium post <a href="#">here</a>
+3. How has Agriculture demand and economics changed? 
+4. How have major world issues been impacted?
 
 ## Table of Contents
 <details open>
@@ -115,19 +111,16 @@ Check out my medium post <a href="#">here</a>
  1. API Practice
       * 1.0 Learning how to utilize the Worldbank API
  2. API Data Wrangling
-      * 2.0 Importing and cleaning indicators from worldbank
-      * 2.1 Population APIs
-      * 2.2 Land Development APIs
-      * 2.3 Living Conditions APIs
-      * 2.4 Agricultural Practices APIs
-      * 2.5 World Issues APIs
+      * 2.0 Indicators and Requests
+      * 2.1 Combining Dataframes
+      * 2.2 Top 10 vs. Other Country Dataframe
+
  3. Exploratory Data Analysis
       * 3.0 Importing
       * 3.1 Question 1: Population
       * 3.2 Question 2: Land Development
-      * 3.3 Question 3: Living Conditions
-      * 3.4 Question 4: Agricultural Practices
-      * 3.5 Question 5: World Issues
+      * 3.4 Question 3: Agricultural Practices
+      * 3.5 Question 4: World Issues
      
 
  </details>
@@ -137,7 +130,19 @@ Check out my medium post <a href="#">here</a>
 <details>
 <summary>Show/Hide</summary>
 <br>
-<a href="#" target="_blank">not active medium post</a> as I go into further detail regarding the process and my answers for the questions in the <a href="#Business_Case">business case</a>.
+      * Question 1: Population
+          It is interesting to note that around 2007 the world population for rural inhabitats begin to slow and then stop entirely, while urban population continues to climb. When breaking this down by country it is easy to see the biggest impact here is China.
+
+      * Question 2: Land Development
+          
+
+      * Question 3: Agricultural Practices
+
+
+      * Question 4: World Issues
+          It is clear that Greenhouse Gases are still going up at a steep rate. There also appears to be a releationship between poverty and mortality under 5, which is expected. Both have gone down since 1990s. 
+
+
 
  Here is a link to the <a href="https://agricultural-analysis.herokuapp.com/" target="_blank">app</a>. 
 
@@ -148,7 +153,7 @@ Check out my medium post <a href="#">here</a>
  <details>
 <summary>Show/Hide</summary>
 <br>
- 
+ One of the biggest issues with this project is currently load times of the deployment. I was able to bring down the load times using async requests for the APIs, but 12 seconds to load is still way too long. I will also place time into documenting the questions each page is trying to answer in order to make the user's experience more streamlined.
 
 </details>
 

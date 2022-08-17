@@ -2,11 +2,11 @@ import plotly.express as px
 from scripts.dataframe_compile import indicator_url_creation, combine_dataframe, format_dataframe
 from scripts.additional_features import create_land_features
 
-indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 'AG.LND.FRST.ZS',
+indicators = ['SP.POP.TOTL', 'AG.LND.TOTL.K2', 
     'AG.LND.CROP.ZS','AG.LND.AGRI.ZS','AG.LND.ARBL.ZS','AG.LND.CREL.HA', 
     'SP.RUR.TOTL.ZS','SP.URB.TOTL.IN.ZS']
 
-world_bank_columns = ['population', 'total_land_sqkm', 'forest_%','crop_%','agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%']
+world_bank_columns = ['population', 'total_land_sqkm', 'crop_%','agricultural_%','arable_%','cereal_grain_hectare', 'rural_pop_%','urban_pop_%']
 
 
 def return_land_figures(data_filter_choice):
@@ -97,7 +97,7 @@ def return_land_figures(data_filter_choice):
             }
             )
 
-        # second cahrt plots 
+        # second chart plots 
 
         graph_two= px.scatter(
            world_bank_df.query('date==2018'), x="arable_sqkm", y="crop_sqkm",
