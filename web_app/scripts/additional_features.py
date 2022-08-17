@@ -20,6 +20,27 @@ def create_land_features(world_bank_df):
 
     return world_bank_df
 
+
+def seperate_econ_features(world_bank_df):
+    """
+    function that creates one new feature for the economic page
+
+    Args:
+        world_bank_df (dataframe): input dataframe from APIs
+    
+    Return:
+        (dataframe): a dataframe with new economic features
+    """
+    world_bank_df['total_gdp_ag_forestry_fishing'] = (world_bank_df['total_gdp_ag_forestry_fishing'] *world_bank_df['GDP'])
+
+    world_bank_df['fertilizer_consump'] = (world_bank_df['fertilizer_consump'] *world_bank_df['arable_sqkm'])
+
+    world_bank_df['cereal_yield_kgPerHectare'] = (world_bank_df['cereal_yield_kgPerHectare'] * world_bank_df['cereal_grain_hectare'])
+
+    return world_bank_df
+
+    
+
 def create_econ_features(world_bank_df):
     """
     function that creates one new feature for the economic page
@@ -30,6 +51,12 @@ def create_econ_features(world_bank_df):
     Return:
         (dataframe): a dataframe with new economic features
     """
+    world_bank_df['total_gdp_ag_forestry_fishing'] = (world_bank_df['total_gdp_ag_forestry_fishing'] / world_bank_df['GDP'])
+
+    world_bank_df['fertilizer_consump'] = (world_bank_df['fertilizer_consump'] /world_bank_df['arable_sqkm'])
+
+    world_bank_df['cereal_yield_kgPerHectare'] = (world_bank_df['cereal_yield_kgPerHectare'] / world_bank_df['cereal_grain_hectare'])
+
 
     #transform features
     world_bank_df['Total_fertilizer'] = (world_bank_df['fertilizer_consump'] *world_bank_df['arable_sqkm']*100)
